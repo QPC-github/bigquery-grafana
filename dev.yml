@@ -3,10 +3,10 @@ name: bigquery-grafana
 up:
   - node:
       yarn: true
-      version: v10.16.3
+      version: v16.13.0
   - go:
       modules: true
-      version: 1.15
+      version: 1.16
 
 commands:
   build:
