@@ -64,14 +64,15 @@ export class BigQueryQueryCtrl extends QueryCtrl {
       { text: 'United States (US)', value: 'US' },
       { text: 'European Union (EU)', value: 'EU' },
       // Americas
-      { text: 'Las Vegas (us-west4)', value: 'us-west4' },
-      { text: 'Los Angeles (us-west2)', value: 'us-west2' },
-      { text: 'Montréal (northamerica-northeast1)', value: 'northamerica-northeast1' },
-      { text: 'Northern Virginia (us-east4)', value: 'us-east4' },
       { text: 'Oregon (us-west1)', value: 'us-west1' },
+      { text: 'Los Angeles (us-west2)', value: 'us-west2' },
       { text: 'Salt Lake City (us-west3)', value: 'us-west3' },
-      { text: 'São Paulo (southamerica-east1)', value: 'southamerica-east1' },
+      { text: 'Las Vegas (us-west4)', value: 'us-west4' },
+      { text: 'Iowa (us-central1)', value: 'us-central1' },
       { text: 'South Carolina (us-east1)', value: 'us-east1' },
+      { text: 'Northern Virginia (us-east4)', value: 'us-east4' },
+      { text: 'Montréal (northamerica-northeast1)', value: 'northamerica-northeast1' },
+      { text: 'São Paulo (southamerica-east1)', value: 'southamerica-east1' },
       // Europe
       { text: 'Belgium (europe-west1)', value: 'europe-west1' },
       { text: 'Finland (europe-north1)', value: 'europe-north1' },
@@ -103,23 +104,23 @@ export class BigQueryQueryCtrl extends QueryCtrl {
 
     this.projectSegment = !this.target.project
       ? uiSegmentSrv.newSegment({
-          fake: true,
-          value: 'select project',
-        })
+        fake: true,
+        value: 'select project',
+      })
       : uiSegmentSrv.newSegment(this.target.project);
 
     this.datasetSegment = !this.target.dataset
       ? uiSegmentSrv.newSegment({
-          fake: true,
-          value: 'select dataset',
-        })
+        fake: true,
+        value: 'select dataset',
+      })
       : uiSegmentSrv.newSegment(this.target.dataset);
 
     this.tableSegment = !this.target.table
       ? uiSegmentSrv.newSegment({
-          fake: true,
-          value: 'select table',
-        })
+        fake: true,
+        value: 'select table',
+      })
       : uiSegmentSrv.newSegment(this.target.table);
 
     this.timeColumnSegment = uiSegmentSrv.newSegment(this.target.timeColumn);
@@ -456,7 +457,7 @@ export class BigQueryQueryCtrl extends QueryCtrl {
       partModel.params[0] = subItem.value;
     }
     let addAlias = false;
-    const _addAlias = function() {
+    const _addAlias = function () {
       return !_.find(selectParts, (p: any) => p.def.type === 'alias');
     };
     switch (partType) {
@@ -662,7 +663,19 @@ export class BigQueryQueryCtrl extends QueryCtrl {
             return this.$q.when([]);
           case 'op':
             return this.$q.when(
-              this.uiSegmentSrv.newOperators(['=', '!=', '<', '<=', '>', '>=', 'IN', 'LIKE', 'NOT LIKE'])
+              this.uiSegmentSrv.newOperators([
+                '=',
+                '!=',
+                '<',
+                '<=',
+                '>',
+                '>=',
+                'IN',
+                'LIKE',
+                'NOT LIKE',
+                'IS',
+                'IS NOT',
+              ])
             );
           default:
             return this.$q.when([]);

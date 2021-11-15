@@ -12,7 +12,6 @@ export class BigQueryConfigCtrl {
   private datasourceSrv: any;
   private current: any;
   private readonly defaultAuthenticationType: string;
-  private readonly defaultSendUsageData: boolean;
   private readonly defaultFlatRateProject: string;
   private readonly defaultProcessingLocation: string;
   private queryPriority: { text: string; value: string }[];
@@ -20,7 +19,6 @@ export class BigQueryConfigCtrl {
   /** @ngInject */
   constructor(datasourceSrv) {
     this.defaultAuthenticationType = 'jwt';
-    this.defaultSendUsageData = true;
     this.defaultFlatRateProject = undefined;
     this.defaultProcessingLocation = undefined;
     this.datasourceSrv = datasourceSrv;
@@ -28,9 +26,6 @@ export class BigQueryConfigCtrl {
     this.current.jsonData.authenticationType = this.current.jsonData.authenticationType
       ? this.current.jsonData.authenticationType
       : this.defaultAuthenticationType;
-    if (this.current.jsonData.sendUsageData === undefined) {
-      this.current.jsonData.sendUsageData = this.defaultSendUsageData;
-    }
     if (this.current.jsonData.flatRateProject === undefined) {
       this.current.jsonData.flatRateProject = this.defaultFlatRateProject;
     }
@@ -53,28 +48,38 @@ export class BigQueryConfigCtrl {
       { key: 'gce', value: 'GCE Default Service Account' },
     ];
     this.locations = [
+      // Multi-regional locations
       { text: 'United States (US)', value: 'US' },
       { text: 'European Union (EU)', value: 'EU' },
+      { text: 'Oregon (us-west1)', value: 'us-west1' },
       { text: 'Los Angeles (us-west2)', value: 'us-west2' },
+      { text: 'Salt Lake City (us-west3)', value: 'us-west3' },
+      { text: 'Las Vegas (us-west4)', value: 'us-west4' },
+      { text: 'Iowa (us-central1)', value: 'us-central1' },
+      { text: 'South Carolina (us-east1)', value: 'us-east1' },
+      { text: 'Northern Virginia (us-east4)', value: 'us-east4' },
       {
         text: 'Montréal (northamerica-northeast1)',
         value: 'northamerica-northeast1',
       },
-      { text: 'South Carolina (us-east1)', value: 'us-east1' },
-      { text: 'Northern Virginia (us-east4)', value: 'us-east4' },
       { text: 'São Paulo (southamerica-east1)', value: 'southamerica-east1' },
+      // Europe
+      { text: 'Belgium (europe-west1)', value: 'europe-west1' },
       { text: 'Finland (europe-north1)', value: 'europe-north1' },
-      { text: 'London (europe-west2)', value: 'europe-west2' },
       { text: 'Frankfurt (europe-west3)', value: 'europe-west3' },
+      { text: 'London (europe-west2)', value: 'europe-west2' },
+      { text: 'Netherlands (europe-west4)', value: 'europe-west4' },
       { text: 'Zürich (europe-west6)', value: 'europe-west6' },
+      // Asia Pacific
       { text: 'Hong Kong (asia-east2)', value: 'asia-east2' },
+      { text: 'Jakarta (asia-southeast2)', value: 'asia-southeast2' },
       { text: 'Mumbai (asia-south1)', value: 'asia-south1' },
       { text: 'Osaka (asia-northeast2)', value: 'asia-northeast2' },
-      { text: 'Taiwan (asia-east1)', value: 'asia-east1' },
-      { text: 'Tokyo (asia-northeast1)', value: 'asia-northeast1' },
+      { text: 'Seoul (asia-northeast3)', value: 'asia-northeast3' },
       { text: 'Singapore (asia-southeast1)', value: 'asia-southeast1' },
       { text: 'Sydney (australia-southeast1)', value: 'australia-southeast1' },
-      { text: 'Seoul (asia-northeast3)', value: 'asia-northeast3' },
+      { text: 'Taiwan (asia-east1)', value: 'asia-east1' },
+      { text: 'Tokyo (asia-northeast1)', value: 'asia-northeast1' },
     ];
     this.queryPriority = [
       { text: 'INTERACTIVE', value: 'INTERACTIVE' },

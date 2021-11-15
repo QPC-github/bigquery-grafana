@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ZipPlugin = require('zip-webpack-plugin');
 
 module.exports = {
   node: {
@@ -28,7 +29,8 @@ module.exports = {
     },
   ],
   plugins: [
-    // new CleanWebpackPlugin('dist', {allowExternal: true}),
+    new CleanWebpackPlugin('doitintl-bigquery-datasource/', {allowExternal: true}),
+    new CleanWebpackPlugin('doitintl-bigquery-datasource-*.zip', {allowExternal: true}),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new CopyWebpackPlugin([
       { from: 'plugin.json', to: '.' },
@@ -37,6 +39,12 @@ module.exports = {
       { from: 'img/*', to: '.' },
       { from: 'partials/*', to: '.' },
     ]),
+    new CopyWebpackPlugin([
+      { from: '../dist/', to: '../doitintl-bigquery-datasource/' },
+    ]),
+    // new ZipPlugin({
+    //   path: ''
+    // })
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.js'],

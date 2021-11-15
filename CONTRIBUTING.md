@@ -1,48 +1,61 @@
-# Contributing
+# Contributing Guide
 
-Grafana uses GitHub to manage contributions.
-Contributions take the form of pull requests that will be reviewed by the core team.
+Thank you for taking the time to contribute! :tada::+1:
 
-- If you are a new contributor see: [Steps to Contribute](#steps-to-contribute)
+The following is a set of guidelines for contributing to BigQuery Plugin for Grafana. These are guidelines, not rules, please use your best judgement and feel free to propose changes to this document in a pull request.
 
-- If you have a trivial fix or improvement, go ahead and create a pull request.
+---
+:star: If you already here and love the project, please make sure to press the Star button. :star:
 
-- If you plan to do something more involved, discuss your idea on the respective [issue](https://github.com/doitintl/bigquery-grafana/issues) or create a [new issue](https://github.com/doitintl/bigquery-grafana/issues/new/choose) if it does not exist. This will avoid unnecessary work and surely give you and us a good deal of inspiration.
+---
 
-## Steps to Contribute
+## Table of Contents
 
-Should you wish to work on a GitHub issue, check first if it is not already assigned to someone. If it is free, you claim it by commenting on the issue that you want to work on it. This is to prevent duplicated efforts from contributors on the same issue.
+[How can I contribute?](#how-can-i-contribute)
 
-Please check the [`beginner friendly`](https://github.com/doitintl/bigquery-grafana/issues?q=is%3Aopen+is%3Aissue+label%3A%22beginner+friendly%22) and [`help wanted`](https://github.com/doitintl/bigquery-grafana/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) labels to find issues that are good for getting started. If you have questions about one of the issues, with or without the tag, please comment on them and one of the core team or the original poster will clarify it.
+- [Reporting Bugs](#reporting-bugs)
+- [Suggesting Enhancements / Feature Requests](#suggesting-enhancements--feature-requests)
+- [Pull Requests](#pull-requests)
+- [Documentation](#documentation)
+- Design?
 
-## Pull Request Checklist
+[Additional Notes](#additional-notes)
 
-- Branch from the master branch and, if needed, rebase to the current master branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes.
+- [Release Method](#release-method)
+- [Code of Conduct](#code-of-conduct)
 
-- If your patch is not getting reviewed or you need a specific person to review it, you can @-reply a reviewer asking for a review in the pull request or a comment.
+## How can I contribute?
 
-- Add tests relevant to the fixed bug or new feature.
+### Reporting Bugs
 
-### Pull requests with new features
+When creating a new bug report, please make sure to:
 
-Commits should be as small as possible, while ensuring that each commit is correct independently (i.e., each commit should compile and pass tests).
+- Search for existing issues first. If you find a previous report of your issue, please update the existing issue with additional information instead of creating a new one.
+- If you still decide to open an issue, please review the template and guidelines and include as much details as possible.
 
-Make sure to include `Closes #<issue number>` or `Fixes #<issue number>` in the pull request description.
+### Suggesting Enhancements / Feature Requests
 
-### Pull requests with bug fixes
+If you would like to suggest an enhancement or ask for a new feature:
 
-Please make all changes in one commit if possible. Include `Closes #<issue number>` in bottom of the commit message.
-A commit message for a bug fix should look something like this.
+- Please check [the forum](https://feedback.doit-intl.com/forums/933776-grafana-bigquery-plugin) for existing threads about what you want to suggest/ask. If there is, feel free to upvote it to signal interest or add your comments.
+- If there is no open thread, you're welcome to start one to have a discussion about what you want to suggest. Try to provide as much details and context as possible and include information about *the problem you want to solve* rather only *your proposed solution*.
 
-```
-avoid infinite loop in the dashboard provisioner
+### Pull Requests
 
-if one dashboard with an uid is refered to by two
-provsioners each provisioner overwrite each other.
-filling up dashboard_versions quite fast if using
-default settings.
+- **Code contributions are welcomed**. For big changes or significant features, it's usually better to reach out first and discuss what you want to implement and how (we recommend reading: [Pull Request First](https://medium.com/practical-blend/pull-request-first-f6bb667a9b6#.ozlqxvj36)). This to make sure that what you want to implement is aligned with our goals for the project and that no one else is already working on it.
+- Include screenshots and animated GIFs in your pull request whenever possible.
+- Please add [documentation](#documentation) for new features or changes in functionality along with the code.
+  
+### Documentation
 
-Closes #12864
-```
+The project's documentation can be found at [https://github.com/doitintl/bigquery-grafana/blob/master/README.md). To contribute edits, you can use GitHub's interface. Click the "Edit on GitHub" link on the documentation page to quickly open the edit interface.
 
-If the pull request needs changes before its merged the new commits should be rebased into one commit before its merged.
+## Additional Notes
+
+### Release Method
+
+We publish a stable release every ~3-4 months, although the goal is to get to a stable release every month. 
+
+## Code of Conduct
+
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/doitintl/bigquery-grafana/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to abuse@doit-intl.com
